@@ -16,6 +16,8 @@
  > export MAIL_USERNAME=<email>
  
  > export MAIL_PASSWORD=<password>
+
+ > export FRONTEND_TOKEN_URL=<FRONTEND_SERVER_URL>/login_by_token
  
  > flask db init
  

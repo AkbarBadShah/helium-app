@@ -13,10 +13,12 @@ import OrganizationFormPages from "../pages/OrganizationFormPages";
 import AttemptSurveyPage from "../pages/AttemptSurveyPage";
 import {PrivateRoute} from "../utilities/PrivateRoute";
 import {DefaultErrorPage} from "../pages/DefaultErrorPage";
+import {LoginByTokenPage} from "../pages/LoginByTokenPage";
 
 export const RoutesSwitcher = () => {
     return (
         <Switch>
+            <Route exact path={routes['login_by_token']} component={LoginByTokenPage}/>
             <Route exact path={routes['login']}>
                 <Login form_type={<LoginForm/>} footer={<LoginFormFooter/>}/>
             </Route>

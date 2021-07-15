@@ -12,10 +12,11 @@ def mail_login_token(email):
         token.delete()
     token = Token(email=email)
     token.save()
-    login_url = url_for(
-        "user_router.temporary_login", token=token.token_string, _external=True
-    )
-    print(login_url)
+    # login_url = url_for(
+    #     "user_router.temporary_login", token=token.token_string, _external=True
+    # )
+    # print(login_url)
+    login_url = f"{app.config['FRONTEND_TOKEN_URL']}/{token.token_string}"
     msg = Message(
         "Password Reset", sender=app.config["MAIL_USERNAME"], recipients=[email]
     )

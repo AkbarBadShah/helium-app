@@ -14,7 +14,7 @@ class User(BaseModel):
     __tablename__ = "users"
 
     name = db.Column(db.String)
-    email = db.Column(db.String)
+    email = db.Column(db.String, unique=True)
     password = db.Column(db.String)
 
     survey_user = db.relationship("SurveyUser", back_populates="user", uselist=False)

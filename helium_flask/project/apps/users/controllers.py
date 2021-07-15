@@ -43,17 +43,17 @@ def profile():
     }
 
 
-@user_router.route("send_login_link/", methods=["POST"])
-def send_login_link():
+@user_router.route("forgot_password/", methods=["POST"])
+def forgot_password():
     email = request.json.get("email")
     user = User.query.filter_by(email=email).first()
     if not user:
-        message = "User not found"
+        message = "user_not_found"
     else:
         if mail_login_token(email):
-            message = "Sent!"
+            message = "success"
         else:
-            message = "Couldn't send mail!"
+            message = "mail_not_sent"
     return {"message": message}
 
 
@@ -62,9 +62,9 @@ def temporary_login(token):
     if token := Token.query.filter_by(token_string=token).first():
         user = User.query.filter_by(email=token.email).first()
         token.delete()
-        return {"message": "Success", "access_token": guard.encode_jwt_token(user)}
+        return {"message": "success", "access_token": guard.encode_jwt_token(user)}
     else:
-        return {"message": "Rejected"}
+        return {"message": "rejected"}
 
 @user_router.route('refresh_token/', methods=['POST'])
 def refresh():

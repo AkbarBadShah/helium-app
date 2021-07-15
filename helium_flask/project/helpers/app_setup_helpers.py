@@ -5,11 +5,12 @@ from flask_sqlalchemy import SQLAlchemy
 def configure_app(app):
     app.config['CORS_HEADERS'] = 'Content-Type'
     # app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///helium"
-    app.config["SQLALCHEMY_DATABASE_URI"] = getenv("DATABASE_URL")
+    # app.config["SQLALCHEMY_DATABASE_URI"] = getenv("DATABASE_URL")
     app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:1234@localhost:5432/helium_flask"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["SECRET_KEY"] = "secret"
-
+    app.config["FRONTEND_TOKEN_URL"] = "http://127.0.0.1:3000/login_by_token"
+    # app.config["FRONTEND_TOKEN_URL"] = getenv("FRONTEND_URL")
     app.config["MAIL_SERVER"] = "smtp.gmail.com"
     app.config["MAIL_PORT"] = 465
     # test account creds

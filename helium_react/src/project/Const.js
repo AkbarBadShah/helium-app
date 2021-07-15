@@ -11,6 +11,7 @@ export const routes = {
     "explore": "/explore",
     "logout": "/logout",
     "report": "/report",
-    "error": "/404"
+    "error": "/404",
+    "login_by_token": "/login_by_token/:token"
 }
 
