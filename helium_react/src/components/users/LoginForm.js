@@ -34,8 +34,10 @@ export const LoginForm = (props) => {
         ).catch(
             error => {
                 console.log(error);
-                if (error.response.statusText === "UNAUTHORIZED") {
-                    console.log("Wrong password/email!")
+                if (error.response) {
+                    if (error.response.statusText === "UNAUTHORIZED") {
+                        console.log("Wrong password/email!")
+                    }
                 }
             }
         );
